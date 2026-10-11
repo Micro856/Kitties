@@ -2,7 +2,7 @@
 //  KittiesApp.swift
 //  Kitties
 //
-//  Created by Marcel on 11/10/2026.
+//  Created by Marcel on 24/07/2026.
 //
 
 import SwiftUI
