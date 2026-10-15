@@ -1,36 +1,61 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
+    "Cat" : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Kočka"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Mačka"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Katė"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Kot"
           }
         }
       }
     },
-    "Actions" : {
-
+    "CC BY 4.0" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CC BY 4.0"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CC BY 4.0"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CC BY 4.0"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CC BY 4.0"
+          }
+        }
+      }
     },
     "Download image" : {
       "localizations" : {
@@ -56,6 +81,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pobierz obrazek"
+          }
+        }
+      }
+    },
+    "Garfield" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garfield"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garfield"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garfield"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garfield"
           }
         }
       }
@@ -116,6 +169,118 @@
         }
       }
     },
+    "Gully" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gully"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gully"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gully"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gully"
+          }
+        }
+      }
+    },
+    "Image URL" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresa obrázku"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL slike"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuotraukos URL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres URL obrazka"
+          }
+        }
+      }
+    },
+    "Licence" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licence"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licensa"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licencija"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licencja"
+          }
+        }
+      }
+    },
+    "Picture no." : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Číslo obrázku"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Broj slike"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuotraukos numeris"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L.p. obrazka"
+          }
+        }
+      }
+    },
     "Randomize" : {
       "localizations" : {
         "cs" : {
@@ -168,6 +333,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rory"
+          }
+        }
+      }
+    },
+    "Show image details" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaži detalje slike"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuotraukos detalės"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyświetl szczegóły obrazka"
+          }
+        }
+      }
+    },
+    "Show picture selector" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaži odabrač slika"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuotraukos selektorius"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyświetl wybór obrazka"
           }
         }
       }

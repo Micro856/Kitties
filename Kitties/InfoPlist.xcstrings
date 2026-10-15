@@ -70,6 +70,30 @@
           }
         }
       }
+    },
+    "NSHumanReadableCopyright" : {
+      "comment" : "Copyright (human-readable)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "© 2026, Marcel Mrówka - This piece of software is licensed under GNU General Public License 3.0 or newer."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2026, Marcel Mrówka - Ovaj program je licensiran pod GNU General Public License 3.0 ili novije."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2026, Marcel Mrówka - Ta aplikacja jest wydawana na licencji GNU General Public License 3.0 lub nowszej."
+          }
+        }
+      }
     }
   },
   "version" : "1.3"

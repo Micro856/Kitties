@@ -2,37 +2,34 @@
 //  ContentView.swift
 //  Kitties
 //
-//  Created by Marcel on 24/07/2026.
+//  Created by Marcel Mrówka on 24/07/2026.
 //
 
 import SwiftUI
+import AppKit
 internal import System
+import Foundation
 
 struct ContentView: View {
     
-    @State private var imageurl: imageJSON?
+    @State private var imageurl = Backend.currentURL(url: "https://example.org")
+    @State private var isShowingDetails = false
+    @State private var isShowingCatID = false
+    @State private var catID = 0
+    @State private var dieIcon = "die.face." + String(Int.random(in: 1..<6)) + ".fill"
     
     enum Cat: String, CaseIterable, Identifiable {
-        case gary, goober, rory
+        case gary, garfield, goober, gully, rory
         var id: Self { self }
     }
     
     @State private var selectedCat: Cat = .gary
     
+    @State private var backend = Backend()
+    
     var body: some View {
         VStack {
-            VStack {
-                Picker("", selection: $selectedCat) {
-                    Text("Gary").tag(Cat.gary)
-                    Text("Goober").tag(Cat.goober)
-                    Text("Rory").tag(Cat.rory)
-                }
-                .pickerStyle(.segmented)
-                .onChange(of: selectedCat) {
-                    Task {await refresh()}
-                }
-            }
-            AsyncImage(url: URL(string: imageurl?.url ?? "https://example.org")) { image in
+            AsyncImage(url: URL(string: imageurl.url)) { image in
                 image
                     .resizable()
                     .scaledToFit()
@@ -41,79 +38,93 @@ struct ContentView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             HStack {
-                Button("Randomize", systemImage: "die.face.3.fill", action: {
-                    Task {await refresh()}
+                Button("Show image details", systemImage: "info.circle") {
+                            self.isShowingDetails = true
+                        }
+                .help("Show image details")
+                .labelStyle(.iconOnly)
+                .buttonStyle(.bordered)
+                        .popover(isPresented: $isShowingDetails) {
+                            Grid {
+                                GridRow {
+                                    Text("Image URL")
+                                    Link(imageurl.url,
+                                          destination: URL(string: imageurl.url)!)
+                                }
+                                if selectedCat == .rory {
+                                        Divider()
+                                        GridRow {
+                                        Text("Licence")
+                                        Link("CC BY 4.0",
+                                              destination: URL(string: "https://rory.cat/license")!)
+                                    }
+                                }
+                            }
+                            .padding()
+                        }
+                Spacer()
+                Button("Randomize", systemImage: dieIcon, action: {
+                    Task {
+                        dieIcon = "die.face." + String(Int.random(in: 1..<6)) + ".fill"
+                        catID = await backend.refreshID(selectedCat: selectedCat).number
+                        print(catID)
+                        imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
+                        print(imageurl.url)
+                    }
                 })
                 .help("Randomize")
                 .labelStyle(.iconOnly)
                 .buttonStyle(.borderedProminent)
                 Button("Download image", systemImage: "arrow.down.circle", action: {
-                    Task {await refresh()}
+                    print("meow")
                 })
                 .help("Download image")
                 .labelStyle(.iconOnly)
                 .buttonStyle(.bordered)
+                Spacer()
+                Button("Show picture selector", systemImage: "pawprint.fill") {
+                            self.isShowingCatID = true
+                        }
+                .help("Show picture selector")
+                .labelStyle(.iconOnly)
+                .buttonStyle(.bordered)
+                        .popover(isPresented: $isShowingCatID) {
+                            Form {
+                                    Picker("Cat", selection: $selectedCat) {
+                                        Label("Gary", systemImage: "cat.fill").tag(Cat.gary)
+                                        Label("Garfield", systemImage: "cat.fill").tag(Cat.garfield)
+                                        Label("Goober", systemImage: "cat.fill").tag(Cat.goober)
+                                        Label("Gully", systemImage: "cat.fill").tag(Cat.gully)
+                                        Label("Rory", systemImage: "cat.fill").tag(Cat.rory)
+                                    }
+                                    .onChange(of: selectedCat) {
+                                        Task {
+                                            dieIcon = "die.face." + String(Int.random(in: 1..<6)) + ".fill"
+                                            catID = await backend.refreshID(selectedCat: selectedCat).number
+                                            print(catID)
+                                            imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
+                                            print(imageurl.url)
+                                            
+                                        }
+                                    }
+                                    TextField("Picture no.", value: $catID, format: .number)
+                                    .onSubmit {
+                                        Task {
+                                            imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
+                                            print(imageurl.url)
+                                        }
+                                    }
+                                }
+                                .padding()
+                            }
             }
         }
         .padding()
         .task {
-            await refresh()
-        }
-    }
-    
-    func refresh() async {
-        do {
-            if selectedCat == .gary {
-                imageurl = try await getJSON(meow: "gary")
-            } else if selectedCat == .goober {
-                imageurl = try await getJSON(meow: "goober")
-            } else if selectedCat == .rory {
-                imageurl = try await getRoryJSON()
-            }
-        } catch APIError.somethingWentWrong{
-            print("something went wrong with getting data")
-        } catch APIError.Htmlisnt200{
-            print("HTML response isnt 200")
-        } catch APIError.cantPharse {
-            print("Cant pharse JSON")
-        } catch {
-            print("No idea what went wrong")
-        }
-    }
-    
-    func getJSON(meow: String) async throws -> imageJSON {
-        
-        let APIUrl = "https://api.garythe.cat/" + meow
-        
-        guard let ActualUrl = URL(string: APIUrl) else { throw APIError.somethingWentWrong }
-        
-        let (data, response) = try await URLSession.shared.data(from: ActualUrl)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw APIError.Htmlisnt200
-        }
-        do {
-            let decoder = JSONDecoder()
-            return try decoder.decode(imageJSON.self, from: data)
-        } catch {
-            throw APIError.cantPharse
-        }
-    }
-    
-    func getRoryJSON() async throws -> imageJSON {
-        
-        let APIUrl = "https://rory.cat/purr"
-        
-        guard let ActualUrl = URL(string: APIUrl) else { throw APIError.somethingWentWrong }
-        
-        let (data, response) = try await URLSession.shared.data(from: ActualUrl)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw APIError.Htmlisnt200
-        }
-        do {
-            let decoder = JSONDecoder()
-            return try decoder.decode(imageJSON.self, from: data)
-        } catch {
-            throw APIError.cantPharse
+            catID = await backend.refreshID(selectedCat: selectedCat).number
+            print(catID)
+            imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
+            print(imageurl.url)
         }
     }
 }
@@ -121,14 +132,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-}
-
-struct imageJSON: Codable {
-    let url: String
-}
-
-enum APIError: Error {
-    case somethingWentWrong
-    case Htmlisnt200
-    case cantPharse
 }
