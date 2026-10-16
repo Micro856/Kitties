@@ -6,7 +6,6 @@
 //
 
 internal import System
-import SwiftUI
 
  class Backend {
     
@@ -54,16 +53,16 @@ import SwiftUI
      func refreshURL(selectedCat: ContentView.Cat, catID: Int) async -> currentURL {
          do {
              if selectedCat == .gary {
-                 garyURL = GaryGooberAPI.getURL(meow: "Gary", catID: catID)
+                 garyURL = GaryGooberAPI.getURL(selectedCat: selectedCat, catID: catID)
                  return currentURL(url: garyURL?.url ?? "https://example.org")
              } else if selectedCat == .goober {
-                 garyURL = GaryGooberAPI.getURL(meow: "Goober", catID: catID)
+                 garyURL = GaryGooberAPI.getURL(selectedCat: selectedCat, catID: catID)
                  return currentURL(url: garyURL?.url ?? "https://example.org")
              } else if selectedCat == .gully {
-                 garyURL = GaryGooberAPI.getURL(meow: "Gully", catID: catID)
+                 garyURL = GaryGooberAPI.getURL(selectedCat: selectedCat, catID: catID)
                  return currentURL(url: garyURL?.url ?? "https://example.org")
              } else if selectedCat == .garfield {
-                 garyURL = GaryGooberAPI.getURL(meow: "Garfield", catID: catID)
+                 garyURL = GaryGooberAPI.getURL(selectedCat: selectedCat, catID: catID)
                  return currentURL(url: garyURL?.url ?? "https://example.org")
              } else if selectedCat == .rory {
                  roryURL = try await RoryAPI.getURL(catID: catID)
@@ -84,10 +83,6 @@ import SwiftUI
              print("No idea what went wrong")
              return currentURL(url: "https://example.org")
          }
-     }
-
-     func Decoding() {
-
      }
 
      struct currentID: Codable {

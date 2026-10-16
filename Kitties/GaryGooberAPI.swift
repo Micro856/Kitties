@@ -27,10 +27,22 @@ class GaryGooberAPI {
         }
     }
     
-    static func getURL(meow: String, catID: Int) -> GaryGooberURL {
-        
-        let catUrl = "https://cdn.garythe.cat/" + meow + "/" + meow + String(catID) + ".jpg"
-        return GaryGooberURL(url: catUrl)
+    static func getURL(selectedCat: ContentView.Cat, catID: Int) -> GaryGooberURL {
+        if selectedCat == .gary {
+            let catUrl = "https://cdn.garythe.cat/Gary/Gary" + String(catID) + ".jpg"
+            return GaryGooberURL(url: catUrl)
+        } else if selectedCat == .goober {
+            let catUrl = "https://cdn.garythe.cat/Goober/Goober" + String(catID) + ".jpg"
+            return GaryGooberURL(url: catUrl)
+        } else if selectedCat == .gully {
+            let catUrl = "https://cdn.garythe.cat/Gully/Gully" + String(catID) + ".jpg"
+            return GaryGooberURL(url: catUrl)
+        } else if selectedCat == .garfield {
+            let catUrl = "https://cdn.garythe.cat/Garfield/Garfield" + String(catID) + ".jpg"
+            return GaryGooberURL(url: catUrl)
+        } else {
+            return GaryGooberURL(url: "https://example.org")
+        }
     }
     
     struct GaryGooberJSON: Codable {

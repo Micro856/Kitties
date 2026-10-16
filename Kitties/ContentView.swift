@@ -76,7 +76,7 @@ struct ContentView: View {
                 .labelStyle(.iconOnly)
                 .buttonStyle(.borderedProminent)
                 Button("Download image", systemImage: "arrow.down.circle", action: {
-                    print("meow")
+                    
                 })
                 .help("Download image")
                 .labelStyle(.iconOnly)
@@ -91,11 +91,46 @@ struct ContentView: View {
                         .popover(isPresented: $isShowingCatID) {
                             Form {
                                     Picker("Cat", selection: $selectedCat) {
-                                        Label("Gary", systemImage: "cat.fill").tag(Cat.gary)
-                                        Label("Garfield", systemImage: "cat.fill").tag(Cat.garfield)
-                                        Label("Goober", systemImage: "cat.fill").tag(Cat.goober)
-                                        Label("Gully", systemImage: "cat.fill").tag(Cat.gully)
-                                        Label("Rory", systemImage: "cat.fill").tag(Cat.rory)
+                                        Label {
+                                            Text("Garfield")
+                                        } icon: {
+                                            Image("garfieldFace")
+                                                .resizable()
+                                                .frame(width: 16, height: 16)
+                                        }
+                                        .tag(Cat.garfield)
+                                        Label {
+                                            Text("Gary")
+                                        } icon: {
+                                            Image("garyFace")
+                                                .resizable()
+                                                .frame(width: 16, height: 16)
+                                        }
+                                        .tag(Cat.gary)
+                                        Label {
+                                            Text("Goober")
+                                        } icon: {
+                                            Image("gooberFace")
+                                                .resizable()
+                                                .frame(width: 16, height: 16)
+                                        }
+                                        .tag(Cat.goober)
+                                        Label {
+                                            Text("Gully")
+                                        } icon: {
+                                            Image("gullyFace")
+                                                .resizable()
+                                                .frame(width: 16, height: 16)
+                                        }
+                                        .tag(Cat.gully)
+                                        Label {
+                                            Text("Rory")
+                                        } icon: {
+                                            Image("roryFace")
+                                                .resizable()
+                                                .frame(width: 16, height: 16)
+                                        }
+                                        .tag(Cat.rory)
                                     }
                                     .onChange(of: selectedCat) {
                                         Task {
