@@ -6,17 +6,20 @@
 //
 
 import SwiftUI
-import AppKit
 internal import System
 import Foundation
 
 struct ContentView: View {
     
+    @Environment(\.openWindow) var openWindow
+    
     @State private var imageurl = Backend.currentURL(url: "https://example.org")
     @State private var isShowingDetails = false
     @State private var isShowingCatID = false
     @State private var catID = 0
-    @State private var dieIcon = "die.face." + String(Int.random(in: 1..<6)) + ".fill"
+    @State private var dieIcon = "die.face.1.fill"
+    
+    @State private var EasterCounter = 0
     
     enum Cat: String, CaseIterable, Identifiable {
         case gary, garfield, goober, gully, rory
@@ -33,6 +36,7 @@ struct ContentView: View {
                 image
                     .resizable()
                     .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             } placeholder: {
                 ProgressView()
             }
@@ -40,7 +44,7 @@ struct ContentView: View {
             HStack {
                 Button("Show image details", systemImage: "info.circle") {
                             self.isShowingDetails = true
-                        }
+                }
                 .help("Show image details")
                 .labelStyle(.iconOnly)
                 .buttonStyle(.bordered)
@@ -65,26 +69,30 @@ struct ContentView: View {
                 Spacer()
                 Button("Randomize", systemImage: dieIcon, action: {
                     Task {
-                        dieIcon = "die.face." + String(Int.random(in: 1..<6)) + ".fill"
-                        catID = await backend.refreshID(selectedCat: selectedCat).number
-                        print(catID)
-                        imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
-                        print(imageurl.url)
+                        await catRandomizeButton()
                     }
                 })
-                .help("Randomize")
-                .labelStyle(.iconOnly)
+                .help("Show a random image of the selected cat")
+                //.labelStyle(.iconOnly)
                 .buttonStyle(.borderedProminent)
-                Button("Download image", systemImage: "arrow.down.circle", action: {
-                    
-                })
-                .help("Download image")
-                .labelStyle(.iconOnly)
-                .buttonStyle(.bordered)
+                //Button("Download image", systemImage: "arrow.down.circle", action: {
+                //
+                //})
+                //.help("Download image")
+                //.labelStyle(.iconOnly)
+                //.buttonStyle(.bordered)
                 Spacer()
                 Button("Show picture selector", systemImage: "pawprint.fill") {
-                            self.isShowingCatID = true
-                        }
+                    EasterCounter += 1
+                    if EasterCounter >= 6 {
+                        EasterCounter = 0
+                        openWindow(id: "easter-egg")
+                    } else {
+                        self.isShowingCatID = true
+                        
+                    }
+                            
+                }
                 .help("Show picture selector")
                 .labelStyle(.iconOnly)
                 .buttonStyle(.bordered)
@@ -134,19 +142,17 @@ struct ContentView: View {
                                     }
                                     .onChange(of: selectedCat) {
                                         Task {
-                                            dieIcon = "die.face." + String(Int.random(in: 1..<6)) + ".fill"
-                                            catID = await backend.refreshID(selectedCat: selectedCat).number
-                                            print(catID)
-                                            imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
-                                            print(imageurl.url)
+                                            EasterCounter = 0
+                                            await catRandomizeID()
+                                            await catLoadUrl()
                                             
                                         }
                                     }
                                     TextField("Picture no.", value: $catID, format: .number)
                                     .onSubmit {
                                         Task {
-                                            imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
-                                            print(imageurl.url)
+                                            EasterCounter = 0
+                                            await catLoadUrl()
                                         }
                                     }
                                 }
@@ -156,11 +162,24 @@ struct ContentView: View {
         }
         .padding()
         .task {
-            catID = await backend.refreshID(selectedCat: selectedCat).number
-            print(catID)
-            imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
-            print(imageurl.url)
+            await catRandomizeButton()
         }
+    }
+    
+    func catRandomizeButton() async {
+        dieIcon = "die.face." + String(Int.random(in: 1..<6)) + ".fill"
+        await catRandomizeID()
+        await catLoadUrl()
+    }
+    
+    func catRandomizeID() async {
+        catID = await backend.refreshID(selectedCat: selectedCat).number
+        print(catID)
+    }
+    
+    func catLoadUrl() async {
+        imageurl = await backend.refreshURL(selectedCat: selectedCat, catID: catID)
+        print(imageurl.url)
     }
 }
 

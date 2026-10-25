@@ -13,5 +13,8 @@ struct KittiesApp: App {
         WindowGroup {
             ContentView()
         }
+        Window("In loving memory of Rudi", id: "easter-egg") {
+            EasterView()
+        }
     }
 }

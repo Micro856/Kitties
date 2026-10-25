@@ -1,15 +1,46 @@
 {
   "fill" : {
-    "automatic-gradient" : "srgb:0.57875,0.32152,0.00000,1.00000"
+    "automatic-gradient" : "srgb:0.58082,0.08843,0.31864,1.00000"
   },
   "groups" : [
     {
       "layers" : [
         {
-          "image-name" : "Kitty-2.svg",
-          "name" : "Kitty-2",
+          "fill" : {
+            "automatic-gradient" : "srgb:0.26052,0.26052,0.26052,1.00000"
+          },
+          "image-name" : "Rudi - Eyes.svg",
+          "name" : "Rudi - Eyes",
           "position" : {
-            "scale" : 2.8,
+            "scale" : 3,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:1.00000,0.54098,0.84731,1.00000"
+          },
+          "image-name" : "Rudi - Nose.svg",
+          "name" : "Rudi - Nose",
+          "position" : {
+            "scale" : 3,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:0.26052,0.26052,0.26052,1.00000"
+          },
+          "image-name" : "Rudi - Smile.svg",
+          "name" : "Rudi - Smile",
+          "position" : {
+            "scale" : 3,
             "translation-in-points" : [
               0,
               0
@@ -18,7 +49,7 @@
         }
       ],
       "position" : {
-        "scale" : 2.8,
+        "scale" : 3,
         "translation-in-points" : [
           0,
           0
@@ -36,40 +67,65 @@
     {
       "layers" : [
         {
-          "image-name" : "Kitty-1.svg",
-          "name" : "Kitty-1",
+          "fill" : {
+            "automatic-gradient" : "srgb:1.00000,0.83235,0.47321,1.00000"
+          },
+          "image-name" : "Rudi - Head Pattern 2.svg",
+          "name" : "Rudi - Head Pattern 2",
           "position" : {
-            "scale" : 2.8,
+            "scale" : 3,
             "translation-in-points" : [
               0,
               0
             ]
           }
-        }
-      ],
-      "position" : {
-        "scale" : 2.8,
-        "translation-in-points" : [
-          0,
-          0
-        ]
-      },
-      "shadow" : {
-        "kind" : "neutral",
-        "opacity" : 0.5
-      },
-      "translucency" : {
-        "enabled" : true,
-        "value" : 0.3
-      }
-    },
-    {
-      "layers" : [
+        },
         {
-          "image-name" : "Kitty.svg",
-          "name" : "Kitty",
+          "fill-specializations" : [
+            {
+              "value" : {
+                "automatic-gradient" : "srgb:1.00000,1.00000,1.00000,1.00000"
+              }
+            },
+            {
+              "appearance" : "dark",
+              "value" : {
+                "automatic-gradient" : "srgb:1.00000,1.00000,1.00000,1.00000"
+              }
+            }
+          ],
+          "image-name" : "Rudi - Head Pattern 1.svg",
+          "name" : "Rudi - Head Pattern 1",
           "position" : {
-            "scale" : 2.8,
+            "scale" : 3,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:1.00000,0.57811,0.00000,1.00000"
+          },
+          "image-name" : "Rudi - Head.svg",
+          "name" : "Rudi - Head",
+          "position" : {
+            "scale" : 3,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:1.00000,0.14913,0.00000,1.00000"
+          },
+          "image-name" : "Rudi - Collar.svg",
+          "name" : "Rudi - Collar",
+          "position" : {
+            "scale" : 3,
             "translation-in-points" : [
               0,
               0
@@ -78,7 +134,7 @@
         }
       ],
       "position" : {
-        "scale" : 2.8,
+        "scale" : 3,
         "translation-in-points" : [
           0,
           0

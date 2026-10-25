@@ -5,7 +5,7 @@
 //  Created by Marcel Mrówka on 12/10/2026.
 //
 
-import SwiftUI
+import Foundation
 internal import System
 
 class RoryAPI {

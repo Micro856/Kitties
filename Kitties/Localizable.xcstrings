@@ -58,6 +58,7 @@
       }
     },
     "Download image" : {
+      "extractionState" : "stale",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
@@ -83,7 +84,8 @@
             "value" : "Pobierz obrazek"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Garfield" : {
       "localizations" : {
@@ -225,6 +227,28 @@
         }
       }
     },
+    "In loving memory of Rudi" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "U voljenoj uspomeni Rudi"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Šviesiam Rudi atminimui"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ku pamięci Rudiego"
+          }
+        }
+      }
+    },
     "Licence" : {
       "localizations" : {
         "cs" : {
@@ -333,6 +357,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rory"
+          }
+        }
+      }
+    },
+    "Show a random image of the selected cat" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaži nasumičnu sliku odabrane mačke"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atsitiktinė šios katės nuotrauka"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyświetl losowy obrazek wybranego kota"
           }
         }
       }
