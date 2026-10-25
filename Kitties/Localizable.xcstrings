@@ -229,6 +229,12 @@
     },
     "In loving memory of Rudi" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Na památku Rudiho"
+          }
+        },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -363,6 +369,12 @@
     },
     "Show a random image of the selected cat" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit náhodný obrázek vybrané kočky"
+          }
+        },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -385,6 +397,12 @@
     },
     "Show image details" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit podrobnosti o obrázku"
+          }
+        },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -407,6 +425,12 @@
     },
     "Show picture selector" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit výběr obrázků"
+          }
+        },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
